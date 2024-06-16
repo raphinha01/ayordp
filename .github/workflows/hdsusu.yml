@@ -22,6 +22,9 @@ jobs:
 
       run: Expand-Archive ngrok.zip
 
+    - run: .\ngrok\ngrok.exe update
+  
+
     - name: Auth
 
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
@@ -40,7 +43,6 @@ jobs:
 
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
 
-    - run: ngrok update
     - name: Create Tunnel
 
       run: .\ngrok\ngrok.exe tcp 3389
